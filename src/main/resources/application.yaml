@@ -1,0 +1,10 @@
+
+#client:
+#  ticketagent:
+#    address: http://localhost:30388/service/agwems?wsdl
+
+server:
+  port: 9091
+
+#cxf:
+#  path: /agwems
