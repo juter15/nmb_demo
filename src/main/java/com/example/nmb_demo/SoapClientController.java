@@ -20,4 +20,12 @@ public class SoapClientController {
     public ResponseEntity checkLine(){
         return ResponseEntity.ok(soapClientService.checkLine());
     }
+    @GetMapping("/monitorDn")
+    public ResponseEntity monitorDn(){
+        return ResponseEntity.ok(soapClientService.monitorDn());
+    }
+    @GetMapping("/unMonitorDn")
+    public ResponseEntity unMonitorDn(){
+        return ResponseEntity.ok(soapClientService.unMonitorDn());
+    }
 }

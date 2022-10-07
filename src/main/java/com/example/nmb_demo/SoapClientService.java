@@ -10,40 +10,49 @@ import soap.*;
 //@RequiredArgsConstructor
 @Slf4j
 public class SoapClientService {
-//    @Autowired
+    //    @Autowired
 //    private BassServiceImplService bassServiceImplService;
     private final BassServiceImplService bassServiceImplService = new BassServiceImplService();
     private final BassServiceInterface client = bassServiceImplService.getBassServiceImplPort();
 
-    public VerifyDNResVo verifyDn(){
+    public VerifyDNResVo verifyDn() {
 //        BassServiceImplService bassServiceImplService = new BassServiceImplService();
 
         VerifyDNReqVo verifyDNReqVo = new VerifyDNReqVo();
         verifyDNReqVo.setCrv(setCommonReqVo());
         verifyDNReqVo.setTryDn("1234");
-        VerifyDNResVo verifyDNResVo = client.verifyDN(verifyDNReqVo);
+        return client.verifyDN(verifyDNReqVo);
 //        VerifyDNResVo verifyDNResVo = bassServiceInterfaceImpl.verifyDN(verifyDNReqVo);
-        log.info("{}", verifyDNResVo);
-        return verifyDNResVo;
     }
 
-    public ResultVo checkLine(){
+    public ResultVo checkLine() {
 //        BassServiceImplService bassServiceImplService = new BassServiceImplService();
 
-
-        ResultVo resultVo = client.checkLine(setCommonReqVo());
+        return client.checkLine(setCommonReqVo());
 //        VerifyDNResVo verifyDNResVo = bassServiceInterfaceImpl.verifyDN(verifyDNReqVo);
-        log.info("{}", resultVo);
-        return resultVo;
     }
-    public CommonReqVo setCommonReqVo(){
+
+    public ResultVo monitorDn() {
+        MonitorDNReqVo monitorDNReqVo = new MonitorDNReqVo();
+        monitorDNReqVo.setCrv(setCommonReqVo());
+        monitorDNReqVo.setTrsSvrIp("1");
+        monitorDNReqVo.setTrsSvrPort(5000);
+        return client.monitorDN(monitorDNReqVo);
+    }
+
+    public ResultVo unMonitorDn() {
+        return client.unmonitorDN(setCommonReqVo());
+    }
+
+    public CommonReqVo setCommonReqVo() {
         CommonReqVo commonReqVo = new CommonReqVo();
         commonReqVo.setReqId("123");
         commonReqVo.setCmi(setCommonMeasInfo());
         commonReqVo.setEventTime("123");
         return commonReqVo;
     }
-    public CommonMeasInfo setCommonMeasInfo(){
+
+    public CommonMeasInfo setCommonMeasInfo() {
         CommonMeasInfo commonMeasInfo = new CommonMeasInfo();
         commonMeasInfo.setAgwIp("125.159.22.51");
         commonMeasInfo.setColcode("TICB_XN_M");
