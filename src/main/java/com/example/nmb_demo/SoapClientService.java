@@ -20,14 +20,22 @@ public class SoapClientService {
 
         VerifyDNReqVo verifyDNReqVo = new VerifyDNReqVo();
         verifyDNReqVo.setCrv(setCommonReqVo());
-        verifyDNReqVo.setTryDn("asd");
+        verifyDNReqVo.setTryDn("1234");
         VerifyDNResVo verifyDNResVo = client.verifyDN(verifyDNReqVo);
 //        VerifyDNResVo verifyDNResVo = bassServiceInterfaceImpl.verifyDN(verifyDNReqVo);
         log.info("{}", verifyDNResVo);
         return verifyDNResVo;
     }
 
+    public ResultVo checkLine(){
+//        BassServiceImplService bassServiceImplService = new BassServiceImplService();
 
+
+        ResultVo resultVo = client.checkLine(setCommonReqVo());
+//        VerifyDNResVo verifyDNResVo = bassServiceInterfaceImpl.verifyDN(verifyDNReqVo);
+        log.info("{}", resultVo);
+        return resultVo;
+    }
     public CommonReqVo setCommonReqVo(){
         CommonReqVo commonReqVo = new CommonReqVo();
         commonReqVo.setReqId("123");
@@ -37,16 +45,16 @@ public class SoapClientService {
     }
     public CommonMeasInfo setCommonMeasInfo(){
         CommonMeasInfo commonMeasInfo = new CommonMeasInfo();
-        commonMeasInfo.setAgwIp("Agwip");
-        commonMeasInfo.setColcode("colcode");
+        commonMeasInfo.setAgwIp("125.159.22.51");
+        commonMeasInfo.setColcode("TICB_XN_M");
         commonMeasInfo.setApsIp("apsIp");
         commonMeasInfo.setEmsIp("emsIp");
         commonMeasInfo.setStartTime("startTime");
         commonMeasInfo.setEndTime("endTime");
         commonMeasInfo.setExId("exId");
         commonMeasInfo.setFlcYn("flcYn");
-        commonMeasInfo.setFlln(2);
-        commonMeasInfo.setLln(1);
+        commonMeasInfo.setFlln(1111111);
+        commonMeasInfo.setLln(1111111);
         commonMeasInfo.setManufacturer("mfc");
         commonMeasInfo.setMgid("mgid");
         commonMeasInfo.setModel("model");

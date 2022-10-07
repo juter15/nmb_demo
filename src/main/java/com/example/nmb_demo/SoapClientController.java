@@ -13,7 +13,11 @@ public class SoapClientController {
     private final SoapClientService soapClientService;
 
     @GetMapping("/verifyDn")
-        public ResponseEntity verifyDn(){
-            return ResponseEntity.ok(soapClientService.verifyDn());
-        }
+    public ResponseEntity verifyDn() {
+        return ResponseEntity.ok(soapClientService.verifyDn());
+    }
+    @GetMapping("/checkLine")
+    public ResponseEntity checkLine(){
+        return ResponseEntity.ok(soapClientService.checkLine());
+    }
 }
